@@ -1,0 +1,12 @@
+FROM debian:latest
+LABEL MAINTAINER="https://github.com/subhojit008/myphisher"
+
+WORKDIR /myphisher/
+ADD . /myphisher
+
+RUN apt update && \
+    apt full-upgrade -y && \
+    apt install -y curl unzip wget && \
+    apt install --no-install-recommends -y php && \
+    apt clean
+CMD ["./myphisher.sh"]
